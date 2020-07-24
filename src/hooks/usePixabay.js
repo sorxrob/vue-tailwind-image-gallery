@@ -7,6 +7,7 @@ export default function usePixabay() {
   const key = process.env.VUE_APP_PIXABAY_API_KEY;
 
   async function fetchImages(term) {
+    error.value = null;
     isLoading.value = true;
     try {
       const res = await fetch(`https://pixabay.com/api/?key=${key}&q=${term}&image_type=photo&orientation=horizontal`);
