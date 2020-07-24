@@ -4,7 +4,7 @@
     <h1 :class="msgClass" v-if="isLoading">Loading...</h1>
     <h1 :class="msgClass" v-else-if="error">{{ error }}</h1>
     <h1 :class="msgClass" v-else-if="!images.length">No Images Found</h1>
-    <div class="grid grid-cols-3 gap-4" v-else>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" v-else>
       <ImageCard :image="image" v-for="(image, idx) in images" :key="idx" />
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
     } = usePixabay();
     const msgClass = 'text-6xl text-center mx-auto mt-32';
 
-    onMounted(() => fetchImages('dogs'));
+    onMounted(() => fetchImages('animals'));
 
     return {
       images,
