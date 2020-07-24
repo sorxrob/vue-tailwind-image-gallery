@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container mx-auto mb-10">
+    <ImageSearch @term-changed="fetchImages" />
+    <h1 class="text-6xl text-center mx-auto mt-32" v-if="isLoading">Loading...</h1>
+    <h1 class="text-6xl text-center mx-auto mt-32" v-else-if="!images.length">No Images Found</h1>
+    <div class="grid grid-cols-3 gap-4" v-else>
+      <ImageCard :image="image" v-for="(image, idx) in images" :key="idx" />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import ImageCard from './components/ImageCard.vue';
+import ImageSearch from './components/ImageSearch.vue';
+import usePixabay from './hooks/usePixabay';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld,
+    ImageCard,
+    ImageSearch,
+  },
+  setup() {
+    const {
+      images,
+      isLoading,
+      fetchImages,
+    } = usePixabay();
+
+    return {
+      images,
+      isLoading,
+      fetchImages,
+    };
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

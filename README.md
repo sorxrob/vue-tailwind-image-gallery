@@ -1,24 +1,21 @@
-# vue3-tailwind-image-gallery
+# Image Gallery - Vue 3.0 + Tailwind CSS
 
-## Project setup
-```
-npm install
-```
+Recreating [React & Tailwind CSS Image Gallery by Brad Traversy](https://youtu.be/FiGmAI5e91M) using Vue Composition API + Tailwind.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Usage
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Add your Pixabay API key to `.env.local` - https://pixabay.com/api/docs/
 
-### Lints and fixes files
-```
-npm run lint
-```
+```bash
+# Install dependencies
+$ npm install
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Compiles and hot-reloads for development
+$ npm run serve
+
+# Compiles and minifies for production
+$ npm run build
+
+# Lints and fixes files
+$ npm run lint
+```

@@ -1,0 +1,39 @@
+<template>
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <img :src="image.webformatURL" alt="random" class="w-full" />
+    <div class="px-6 py-4">
+      <div class="font-bold text-purple-500 text-xl mb-2">Photo by {{ image.user }}</div>
+      <ul>
+        <li><strong>Views:</strong> {{ image.views }}</li>
+        <li><strong>Downloads:</strong> {{ image.downloads }}</li>
+        <li><strong>Likes:</strong> {{ image.likes }}</li>
+      </ul>
+    </div>
+    <div class="px-6 py-4">
+      <span
+      v-for="tag in imageFormatted.tags"
+      :key="tag"
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+        >#{{tag}}</span
+      >
+    </div>
+  </div>
+</template>
+
+<script>
+import { computed } from 'vue';
+
+export default {
+  props: ['image'],
+  setup(props) {
+    const imageFormatted = computed(() => ({
+      ...props.image,
+      tags: props.image.tags.split(','),
+    }));
+
+    return {
+      imageFormatted,
+    };
+  },
+};
+</script>
