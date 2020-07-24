@@ -23,5 +23,6 @@ export default function usePixabay() {
     images,
     isLoading,
     fetchImages,
+    error
   };
 }
