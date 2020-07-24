@@ -11,7 +11,6 @@ export default function usePixabay() {
     try {
       const res = await fetch(`https://pixabay.com/api/?key=${key}&q=${term}&image_type=photo&orientation=horizontal`);
       const data = await res.json();
-      console.log(data.hits);
       images.value = data.hits;
     } catch (e) {
       error.value = 'An error occurred';
