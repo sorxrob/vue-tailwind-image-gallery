@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 
 export default function usePixabay() {
   const images = ref([]);
@@ -18,8 +18,6 @@ export default function usePixabay() {
     }
     isLoading.value = false;
   }
-
-  onMounted(() => fetchImages('random'));
 
   return {
     images,
