@@ -28,7 +28,7 @@ export default {
   setup(props) {
     const imageFormatted = computed(() => ({
       ...props.image,
-      tags: props.image.tags.split(','),
+      tags: props.image.tags.split(',').map((i) => i.trim()),
     }));
 
     return {
