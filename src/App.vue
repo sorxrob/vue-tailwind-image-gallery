@@ -1,17 +1,16 @@
 <template>
   <div class="container mx-auto mb-10">
     <ImageSearch @term-changed="fetchImages" />
-    <h1 :class="msgClass" v-if="isLoading">Loading...</h1>
-    <h1 :class="msgClass" v-else-if="error">{{ error }}</h1>
-    <h1 :class="msgClass" v-else-if="!images.length">No Images Found</h1>
+    <h1 :class="msgClass" v-if="status === 'loading'">Loading...</h1>
+    <h1 :class="msgClass" v-else-if="status === 'error'">{{ error }}</h1>
+    <h1 :class="msgClass" v-else-if="status === 'success' && !data.length">No Images Found</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" v-else>
-      <ImageCard :image="image" v-for="(image, idx) in images" :key="idx" />
+      <ImageCard :image="image" v-for="(image, idx) in data" :key="idx" />
     </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue';
 import ImageCard from './components/ImageCard.vue';
 import ImageSearch from './components/ImageSearch.vue';
 import usePixabay from './hooks/usePixabay';
@@ -23,20 +22,18 @@ export default {
   },
   setup() {
     const {
-      images,
-      isLoading,
+      data,
+      status,
       fetchImages,
-      error,
     } = usePixabay();
     const msgClass = 'text-6xl text-center mx-auto mt-32';
 
-    onMounted(() => fetchImages('animals'));
+    fetchImages('animals');
 
     return {
-      images,
-      isLoading,
+      data,
       fetchImages,
-      error,
+      status,
       msgClass,
     };
   },
