@@ -2,6 +2,8 @@
 
 Recreating [React & Tailwind CSS Image Gallery by Brad Traversy](https://youtu.be/FiGmAI5e91M) using Vue Composition API + Tailwind.
 
+Demo: https://vue-tailwind-image-gallery.vercel.app
+
 ## Usage
 
 Add your Pixabay API key to `.env.local` - https://pixabay.com/api/docs/
