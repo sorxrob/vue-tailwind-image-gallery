@@ -29,6 +29,9 @@ export default {
     const imageFormatted = computed(() => ({
       ...props.image,
       tags: props.image.tags.split(',').map((i) => i.trim()),
+      views: props.image.views.toLocaleString(),
+      downloads: props.image.downloads.toLocaleString(),
+      likes: props.image.likes.toLocaleString(),
     }));
 
     return {
