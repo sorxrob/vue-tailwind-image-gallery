@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+  <div class="rounded overflow-hidden shadow-lg">
     <img :src="imageFormatted.webformatURL" alt="random" class="w-full" />
     <div class="px-6 py-4">
       <div class="font-bold text-purple-500 text-xl mb-2">Photo by {{ imageFormatted.user }}</div>
