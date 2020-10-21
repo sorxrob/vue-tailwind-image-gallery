@@ -1,9 +1,11 @@
 <template>
   <div class="container mx-auto px-10 p-10">
     <ImageSearch @term-changed="fetchImages" />
-    <h1 :class="msgClass" v-if="status === 'loading'">Loading...</h1>
-    <h1 :class="msgClass" v-else-if="status === 'error'">{{ error }}</h1>
-    <h1 :class="msgClass" v-else-if="status === 'success' && !data.length">No Images Found</h1>
+    <h1 class="text-6xl text-center mx-auto mt-32" :class="msgClass" v-if="status === 'loading'">
+      <span v-if="status === 'loading'">Loading...</span>
+      <span v-else-if="status === 'error'">{{ error }}</span>
+      <span v-else-if="status === 'success' && !data.length">No Images Found</span>
+    </h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10" v-else>
       <ImageCard :image="image" v-for="(image, idx) in data" :key="idx" />
     </div>
@@ -26,7 +28,6 @@ export default {
       status,
       fetchImages,
     } = usePixabay();
-    const msgClass = 'text-6xl text-center mx-auto mt-32';
 
     fetchImages('animals');
 
@@ -34,7 +35,6 @@ export default {
       data,
       fetchImages,
       status,
-      msgClass,
     };
   },
 };
