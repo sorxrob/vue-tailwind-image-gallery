@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm rounded overflow-hidden my-10 mx-auto">
+  <div class="max-w-sm rounded overflow-hidden mx-auto">
     <form @submit.prevent="searchImages" class="w-full max-w-sm">
       <div class="flex items-center border-b border-teal-500 py-2">
         <input
